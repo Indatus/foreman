@@ -14,7 +14,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class BuildCommand extends \Symfony\Component\Console\Command\Command
+class ScaffoldCommand extends \Symfony\Component\Console\Command\Command
 {
 
     use Command;
@@ -28,11 +28,9 @@ class BuildCommand extends \Symfony\Component\Console\Command\Command
     {
         $this->ignoreValidationErrors();
 
-        $this->setName('build')
-                ->setDescription('Commission Forman to build a new Laravel app for you')
-                ->addArgument('app-name', InputArgument::REQUIRED, "Name of your app")
-                ->addArgument('template-file', InputArgument::REQUIRED, "Path to your template file")
-                ->addOption('pretend', null, InputOption::VALUE_NONE, 'Dump intended actions for inspection.');
+        $this->setName('scaffold')
+                ->setDescription('Generate a scaffolded Foreman template file')
+                ->addArgument('file', InputArgument::REQUIRED, "Location to write the scaffold file");
     }
 
     /**
