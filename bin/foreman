@@ -3,7 +3,7 @@
 
 require __DIR__.'/../src/vendor/autoload.php';
 $app = new Symfony\Component\Console\Application('Foreman', '1.0.0');
-$app->add(new Foreman\Console\RunCommand);
+$app->add(new Foreman\Console\BuildCommand);
 
 $updateCommand = new KevinGH\Amend\Command('self-update');
 $updateCommand->setManifestUri('https://github.com/Indatus/foreman/raw/master/foreman-manifest.json');

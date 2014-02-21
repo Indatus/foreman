@@ -14,7 +14,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class RunCommand extends \Symfony\Component\Console\Command\Command
+class BuildCommand extends \Symfony\Component\Console\Command\Command
 {
 
     use Command;
@@ -28,10 +28,11 @@ class RunCommand extends \Symfony\Component\Console\Command\Command
     {
         $this->ignoreValidationErrors();
 
-        $this->setName('build-cli')
-                ->setDescription('Commission Forman to build a new CLI package')
-                ->addArgument('name', InputArgument::REQUIRED)
-                ->addOption('pretend', null, InputOption::VALUE_NONE, 'Dump Bash script for inspection.');
+        $this->setName('build')
+                ->setDescription('Commission Forman to build a new Laravel app for you')
+                ->addArgument('app-name', InputArgument::REQUIRED, "Name of your app")
+                ->addArgument('template-file', InputArgument::REQUIRED, "Path to your template file")
+                ->addOption('pretend', null, InputOption::VALUE_NONE, 'Dump intended actions for inspection.');
     }
 
     /**
@@ -44,15 +45,4 @@ class RunCommand extends \Symfony\Component\Console\Command\Command
         $this->comment('Bang!', 'Nothing to do, please add some code', true);
     }
 
-    
-
-    /**
-     * Deteremine if pretending and output should be dumped.
-     *
-     * @return bool
-     */
-    protected function pretending()
-    {
-        return $this->input->getOption('pretend');
-    }
 }
