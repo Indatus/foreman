@@ -13,6 +13,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Construction\Foundation;
 
 class BuildCommand extends \Symfony\Component\Console\Command\Command
 {
@@ -30,8 +31,8 @@ class BuildCommand extends \Symfony\Component\Console\Command\Command
 
         $this->setName('build')
                 ->setDescription('Commission Forman to build a new Laravel app for you')
-                ->addArgument('app-name', InputArgument::REQUIRED, "Name of your app")
-                ->addArgument('template-file', InputArgument::REQUIRED, "Path to your template file")
+                ->addArgument('dir', InputArgument::REQUIRED, "Directory where your app should be installed")
+                ->addArgument('template', InputArgument::REQUIRED, "Path to your Foreman template file")
                 ->addOption('pretend', null, InputOption::VALUE_NONE, 'Dump intended actions for inspection.');
     }
 
@@ -42,6 +43,11 @@ class BuildCommand extends \Symfony\Component\Console\Command\Command
      */
     protected function fire()
     {
-        $this->comment('Bang!', 'Nothing to do, please add some code', true);
+        $dir = $this->argument('dir');
+        $cmd = Foundation::getLaravelInstallCommand($dir);
+        $foundation = new Foundation($dir, new Process($cmd));
+        $foundation->install(function ($type, $buffer) {
+            $this->comment("Installing Laravel", $buffer);
+        });
     }
 }

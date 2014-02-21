@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8691b0d7fc6668f1719434454db703d1",
+    "hash": "5a87ec91be099d04a81dc989bc4a5b35",
     "packages": [
         {
             "name": "herrera-io/json",
@@ -228,12 +228,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "e5a9074fb8b4471f8d4029b628b397bf496150f5"
+                "reference": "7b75bbe8bf2e22b907c6c05283870d8ee3e6ff69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/e5a9074fb8b4471f8d4029b628b397bf496150f5",
-                "reference": "e5a9074fb8b4471f8d4029b628b397bf496150f5",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/7b75bbe8bf2e22b907c6c05283870d8ee3e6ff69",
+                "reference": "7b75bbe8bf2e22b907c6c05283870d8ee3e6ff69",
                 "shasum": ""
             },
             "require": {
@@ -270,7 +270,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-02-19 17:09:17"
+            "time": "2014-02-21 05:07:30"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -545,6 +545,55 @@
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
             "time": "2014-01-07 13:28:54"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v2.4.2",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "c175448bac997556f8ab972908a4e14c7291fb03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/c175448bac997556f8ab972908a4e14c7291fb03",
+                "reference": "c175448bac997556f8ab972908a4e14c7291fb03",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-02-11 13:52:09"
         }
     ],
     "packages-dev": [
