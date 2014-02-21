@@ -13,6 +13,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Scaffolding\TemplateWriter;
+use Illuminate\Filesystem\Filesystem;
 
 class ScaffoldCommand extends \Symfony\Component\Console\Command\Command
 {
@@ -40,6 +42,10 @@ class ScaffoldCommand extends \Symfony\Component\Console\Command\Command
      */
     protected function fire()
     {
-        $this->comment('Bang!', 'Nothing to do, please add some code', true);
+        $file = $this->argument('file');
+        $tw = new TemplateWriter($file, new Filesystem);
+        $output = $tw->write();
+
+        $this->comment("Success", "Template written to {$output}");
     }
 }
