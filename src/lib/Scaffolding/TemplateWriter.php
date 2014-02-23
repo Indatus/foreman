@@ -41,7 +41,12 @@ class TemplateWriter
      */
     public function __construct($path, $filesystem)
     {
-        $this->path = $path;
+        if (substr($path, -1, 1) == "/") {
+            $this->path = substr($path, 0, strlen($path)-1);
+        } else {
+            $this->path = $path;
+        }
+
         $this->filesystem = $filesystem;
     }
 
@@ -108,7 +113,7 @@ class TemplateWriter
      */
     public function getStructureJson()
     {
-        return json_encode($this->getStructureArray(), JSON_PRETTY_PRINT);
+        return json_encode($this->getStructureArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 
 

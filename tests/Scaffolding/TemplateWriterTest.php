@@ -20,6 +20,13 @@ class TemplateWriterTest extends \PHPUnit_Framework_TestCase
             $path,
             $tw->getPath()
         );
+
+        $path = '/path/to/file/';
+        $tw = new TemplateWriter($path, new FS);
+        $this->assertEquals(
+            '/path/to/file',
+            $tw->getPath()
+        );
     }
 
 
@@ -37,7 +44,7 @@ class TemplateWriterTest extends \PHPUnit_Framework_TestCase
     {
         $tw = new TemplateWriter('/some/path', new FS);
         $this->assertJsonStringEqualsJsonString(
-            json_encode($this->getStructureArray(), JSON_PRETTY_PRINT),
+            json_encode($this->getStructureArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
             $tw->getStructureJson()
         );
     }
@@ -61,7 +68,7 @@ class TemplateWriterTest extends \PHPUnit_Framework_TestCase
             ->once()
             ->with(
                 $path.'/foreman-tpl.json',
-                json_encode($this->getStructureArray(), JSON_PRETTY_PRINT)
+                json_encode($this->getStructureArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
             );
 
         //call isDir on a file
@@ -75,7 +82,7 @@ class TemplateWriterTest extends \PHPUnit_Framework_TestCase
             ->once()
             ->with(
                 $file,
-                json_encode($this->getStructureArray(), JSON_PRETTY_PRINT)
+                json_encode($this->getStructureArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
             );
 
         $tw = new TemplateWriter($path, $fsMock);
