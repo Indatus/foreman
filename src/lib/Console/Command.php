@@ -1,4 +1,4 @@
-<?php namespace Foreman\Console;
+<?php namespace Console;
 
 /**
  * This file was copied from and inspired by a similar

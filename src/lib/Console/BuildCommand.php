@@ -1,4 +1,4 @@
-<?php namespace Foreman\Console;
+<?php namespace Console;
 
 /**
  * This file was copied from and inspired by a similar
@@ -8,12 +8,12 @@
  * @see  https://github.com/laravel/envoy
  */
 
-use Symfony\Component\Process\Process;
+use Symfony\Component\Process\ProcessBuilder;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Construction\Foundation;
+use Construction\Laravel;
 
 class BuildCommand extends \Symfony\Component\Console\Command\Command
 {
@@ -43,11 +43,10 @@ class BuildCommand extends \Symfony\Component\Console\Command\Command
      */
     protected function fire()
     {
-        $dir = $this->argument('dir');
-        $cmd = Foundation::getLaravelInstallCommand($dir);
-        $foundation = new Foundation($dir, new Process($cmd));
-        $foundation->install(function ($type, $buffer) {
-            $this->comment("Installing Laravel", $buffer);
-        });
+        (new Laravel(
+            $this->argument('dir'),
+            new ProcessBuilder,
+            $this
+        ))->install();
     }
 }
