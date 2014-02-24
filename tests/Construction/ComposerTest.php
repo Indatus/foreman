@@ -65,7 +65,7 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
 
             $mCmd->shouldReceive('comment')
                 ->once()
-                ->with("Composer", "Require {$pkg} {$ver}");
+                ->with("Composer", "Require: {$pkg} {$ver}");
         }
         
 
@@ -86,6 +86,54 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             $expectedPackages,
             $composer->getComposerArray()[Composer::REQUIRE_DEPENDENCIES]
+        );
+
+    }
+
+
+    public function testRequireDevPackages()
+    {
+        $appDir = '/path/to/app';
+        $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
+        $require = $this->getConfig()['require-dev'];
+
+        $mFS = m::mock('Illuminate\Filesystem\Filesystem');
+        $mFS->shouldReceive('get')
+            ->once()
+            ->with($composerPath)
+            ->andReturn($this->getComposerJson());
+   
+        $mCmd = m::mock('Console\BuildCommand');
+        $mCmd->shouldIgnoreMissing();
+
+        foreach ($require as $package) {
+
+            $pkg = $package['package'];
+            $ver = $package['version'];
+
+            $mCmd->shouldReceive('comment')
+                ->once()
+                ->with("Composer", "Require Dev: {$pkg} {$ver}");
+        }
+        
+
+        $composer = new Composer(
+            $appDir,
+            $this->getConfig(),
+            $mFS,
+            $mCmd
+        );
+        $composer->requireDevPackages();
+
+        $expectedPackages = [
+            'mockery/mockery'           =>'dev-master@dev',
+            'fzaninotto/faker'          => '1.3.*',
+            'squizlabs/php_codesniffer' => '*'
+        ];
+
+        $this->assertEquals(
+            $expectedPackages,
+            $composer->getComposerArray()[Composer::REQUIRE_DEV_DEPENDENCIES]
         );
 
     }

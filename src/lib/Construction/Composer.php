@@ -134,7 +134,7 @@ class Composer
             $pkg = $package['package'];
             $ver = $package['version'];
 
-            $this->command->comment("Composer", "Require {$pkg} {$ver}");
+            $this->command->comment("Composer", "Require: {$pkg} {$ver}");
 
             $require[$pkg] = $ver;
         }
@@ -148,6 +148,19 @@ class Composer
         $key = str_replace(TemplateReader::COMPOSER.'.', '', TemplateReader::COMPOSER_REQ_DEV);
 
         $data = array_get($this->config, $key);
+
+        $require_dev = [];
+
+        foreach ($data as $package) {
+            $pkg = $package['package'];
+            $ver = $package['version'];
+
+            $this->command->comment("Composer", "Require Dev: {$pkg} {$ver}");
+
+            $require_dev[$pkg] = $ver;
+        }
+
+        $this->composer[static::REQUIRE_DEV_DEPENDENCIES] = $require_dev;
     }
 
 
