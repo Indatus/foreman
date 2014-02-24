@@ -6,7 +6,7 @@ class Path
      * Regex patttern for identifying
      * absolute paths
      */
-    const ABSOLUTE_PATTERN = "/^(?:\/|\\\\|\w:\\\\|\w:\/).*$/";
+    const ABSOLUTE_PATTERN = "/^(?:\/|vfs:|\\\\|\w:\\\\|\w:\/).*$/";
 
 
     /**
