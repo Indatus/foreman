@@ -42,8 +42,7 @@ class BuildCommand extends \Symfony\Component\Console\Command\Command
         $this->setName('build')
                 ->setDescription('Commission Forman to build a new Laravel app for you')
                 ->addArgument('dir', InputArgument::REQUIRED, "Directory where your app should be installed")
-                ->addArgument('template', InputArgument::REQUIRED, "Path to your Foreman template file")
-                ->addOption('pretend', null, InputOption::VALUE_NONE, 'Dump intended actions for inspection.');
+                ->addArgument('template', InputArgument::REQUIRED, "Path to your Foreman template file");
     }
 
     /**
