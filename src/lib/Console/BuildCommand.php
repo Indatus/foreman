@@ -14,6 +14,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Construction\Laravel;
+use Construction\TemplateReader;
+use Construction\Structure;
+use Support\Path;
 
 /**
  * CLI command used to build a new Laravel app
@@ -48,10 +51,43 @@ class BuildCommand extends \Symfony\Component\Console\Command\Command
      */
     protected function fire()
     {
+
+        $appDir = $this->argument('dir');
+
+        //exit is non-absolute path to app directory was given
+        if (! preg_match(Path::ABSOLUTE_PATTERN, $appDir)) {
+            $this->comment("Error", "App directory must be an absolute path", true);
+            exit;
+        }
+
+
+        //install a fresh Laravel app
         (new Laravel(
-            $this->argument('dir'),
+            $appDir,
             new ProcessBuilder,
             $this
         ))->install();
+
+
+        //get the template
+        $template = new TemplateReader(
+            $this->argument('template'),
+            new Filesystem,
+            $this
+        );
+
+
+        //process structural portions of the config
+        $structure = new Structure(
+            $appDir,
+            $template->getConfigSection(TemplateReader::STRUCTURE),
+            new Filesystem,
+            $this
+        );
+        $structure->copy();
+        $structure->move();
+        $structure->delete();
+        $structure->touch();
+        $structure->mkdirs();
     }
 }
