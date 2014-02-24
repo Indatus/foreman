@@ -13,9 +13,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Illuminate\Filesystem\Filesystem;
 use Construction\Laravel;
 use Construction\TemplateReader;
 use Construction\Structure;
+use Construction\Composer;
 use Support\Path;
 
 /**
@@ -89,5 +91,20 @@ class BuildCommand extends \Symfony\Component\Console\Command\Command
         $structure->delete();
         $structure->touch();
         $structure->mkdirs();
+
+
+        //process composer portions of the config
+        $composer = new Composer(
+            $appDir,
+            $template->getConfigSection(TemplateReader::COMPOSER),
+            new Filesystem,
+            $this
+        );
+        $composer->requirePackages();
+        $composer->requireDevPackages();
+        $composer->autoloadClassmap();
+        $composer->autoloadPsr0();
+        $composer->autoloadPsr4();
+        $composer->writeComposerJson();
     }
 }

@@ -122,12 +122,15 @@ class Structure
 
         foreach ($data as $mv) {
 
-            $from = Path::absolute($mv['from'], $this->appDir);
-            $to   = Path::absolute($mv['to'], $this->appDir);
+            if (!empty($mv['from']) && !empty($mv['to'])) {
 
-            $this->command->comment("Move", "from {$from} to {$to}");
+                $from = Path::absolute($mv['from'], $this->appDir);
+                $to   = Path::absolute($mv['to'], $this->appDir);
 
-            $this->filesystem->move($from, $to);
+                $this->command->comment("Move", "from {$from} to {$to}");
+
+                $this->filesystem->move($from, $to);
+            }
         }
     }//end move
 
@@ -198,9 +201,15 @@ class Structure
 
         foreach ($data as $dir) {
 
-            $this->command->comment("Make Directory", $dir);
+            if (!empty($dir)) {
+                
+                $dir = Path::absolute($dir, $this->appDir);
 
-            $this->filesystem->makeDirectory($dir, 0777, true);
+                $this->command->comment("Make Directory", $dir);
+
+                $this->filesystem->makeDirectory($dir, 0777, true);
+
+            }
         }
     }
 }

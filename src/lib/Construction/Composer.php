@@ -134,7 +134,7 @@ class Composer
     {
         $composerJson = Path::absolute('composer.json', $this->appDir);
 
-        $this->command->comment('Composer', "Writing composer file to {$composerJson}");
+        $this->command->comment('Foreman', "Writing composer file to {$composerJson}");
 
         $this->filesystem->put($composerJson, $this->getComposerJson());
     }
@@ -253,7 +253,9 @@ class Composer
             $psr0[$name] = $value;
         }
 
-        array_set($this->composer, static::AUTOLOAD_PSR0, $psr0);
+        if (count($psr0) > 0) {
+            array_set($this->composer, static::AUTOLOAD_PSR0, $psr0);
+        }
     }
 
 
@@ -279,6 +281,8 @@ class Composer
             $psr4[$name] = $value;
         }
 
-        array_set($this->composer, static::AUTOLOAD_PSR4, $psr4);
+        if (count($psr4) > 0) {
+            array_set($this->composer, static::AUTOLOAD_PSR4, $psr4);
+        }
     }
 }

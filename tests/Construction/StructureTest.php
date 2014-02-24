@@ -198,7 +198,7 @@ class StructureTest extends \PHPUnit_Framework_TestCase
 
     public function testMakeDirectories()
     {
-        $dir  = '/path/to/app';
+        $appDir  = '/path/to/app';
         $mFS  = m::mock('Illuminate\Filesystem\Filesystem');
         $mCmd = m::mock('Console\BuildCommand');
 
@@ -208,7 +208,7 @@ class StructureTest extends \PHPUnit_Framework_TestCase
                 ->with("Make Directory", $dir);
 
             $mFS->shouldReceive('makeDirectory')->once()
-                ->with($dir, 0777, true);
+                ->with(Path::absolute($dir, $appDir), 0777, true);
         }
 
         $structure = new Structure($dir, $this->getConfig(), $mFS, $mCmd);

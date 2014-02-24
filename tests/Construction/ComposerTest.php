@@ -91,7 +91,7 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function testRequireDevPackages()
+    public function testRequireDevPackagesWithNoReqDevAlready()
     {
         $appDir = '/path/to/app';
         $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
@@ -116,7 +116,59 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
                 ->with("Composer", "Require Dev: {$pkg} {$ver}");
         }
         
+        //test on a config with NO require-dev
+        $composer = new Composer(
+            $appDir,
+            $this->getConfig(),
+            $mFS,
+            $mCmd
+        );
+        $composer->requireDevPackages();
 
+        $expectedPackages = [
+            'mockery/mockery'           =>'dev-master@dev',
+            'fzaninotto/faker'          => '1.3.*',
+            'squizlabs/php_codesniffer' => '*'
+        ];
+
+        $this->assertEquals(
+            $expectedPackages,
+            $composer->getComposerArray()[Composer::REQUIRE_DEV_DEPENDENCIES]
+        );
+    }
+
+
+
+    public function testRequireDevPackagesWithExistingReqDev()
+    {
+        $appDir = '/path/to/app';
+        $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
+        $require = $this->getConfig()['require-dev'];
+
+        $jArray = json_decode($this->getComposerJson(), true);
+        $jArray['require-dev'] = ["mockery/mockery" =>"dev-master@dev"];
+        $json = json_encode($jArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+        $mFS = m::mock('Illuminate\Filesystem\Filesystem');
+        $mFS->shouldReceive('get')
+            ->once()
+            ->with($composerPath)
+            ->andReturn($json);
+   
+        $mCmd = m::mock('Console\BuildCommand');
+        $mCmd->shouldIgnoreMissing();
+
+        foreach ($require as $package) {
+
+            $pkg = $package['package'];
+            $ver = $package['version'];
+
+            $mCmd->shouldReceive('comment')
+                ->once()
+                ->with("Composer", "Require Dev: {$pkg} {$ver}");
+        }
+        
+        //test on a config with NO require-dev
         $composer = new Composer(
             $appDir,
             $this->getConfig(),
@@ -323,7 +375,7 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
 
         $mCmd->shouldReceive('comment')
             ->once()
-            ->with("Composer", "Writing composer file to {$composerPath}");
+            ->with("Foreman", "Writing composer file to {$composerPath}");
 
         $composer = new Composer(
             $appDir,
