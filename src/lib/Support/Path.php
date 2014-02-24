@@ -1,5 +1,9 @@
 <?php namespace Support;
 
+/**
+ * Class for interacting with and finding out information
+ * about filesystem paths
+ */
 class Path
 {
     /**

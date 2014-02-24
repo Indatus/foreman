@@ -4,6 +4,11 @@ use Console\BuildCommand;
 use Illuminate\Filesystem\Filesystem;
 use Support\Path;
 
+/**
+ * Class for working with filesystem structure
+ * requirements of the Forman package as defined in 
+ * the Foreman template file.
+ */
 class Structure
 {
     /**
