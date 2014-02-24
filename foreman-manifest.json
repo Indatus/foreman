@@ -1,7 +1,7 @@
 [
     {
         "name": "foreman.phar",
-        "sha1": "f6529bc1147ca436ed5d9cb0454be2f5a4f44574",
+        "sha1": "787d7674f47faad1df9484bd106673c23827cf16",
         "url": "https://raw.github.com/indatus/foreman/v1.0.0/foreman.phar",
         "version": "1.0.0"
     }
