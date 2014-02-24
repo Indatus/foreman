@@ -10,7 +10,10 @@
         }
     ],
     "autoload": {
-        "classmap": ["src/lib"]
+        "classmap": ["src/lib"],
+        "files": [
+            "src/vendor/illuminate/support/Illuminate/Support/helpers.php"
+        ]
     },
     "require": {
         "php": ">=5.4.0",

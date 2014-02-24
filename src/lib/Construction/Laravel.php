@@ -3,6 +3,9 @@
 use Console\BuildCommand;
 use Symfony\Component\Process\ProcessBuilder;
 
+/**
+ * Class used for generating a Laravel installation
+ */
 class Laravel
 {
 

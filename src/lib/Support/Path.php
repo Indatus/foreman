@@ -2,6 +2,12 @@
 
 class Path
 {
+    /**
+     * Regex patttern for identifying
+     * absolute paths
+     */
+    const ABSOLUTE_PATTERN = "/^(?:\/|\\\\|\w:\\\\|\w:\/).*$/";
+
 
     /**
      * Function to remove a trailing slash / or \
@@ -35,11 +41,8 @@ class Path
      */
     public static function absolute($path, $basePath)
     {
-        
-        $absolutePattern = "/^(?:\/|\\\\|\w:\\\\|\w:\/).*$/";
-
         //path is already absolute
-        if (preg_match($absolutePattern, $path)) {
+        if (preg_match(static::ABSOLUTE_PATTERN, $path)) {
 
             $result = $path;
 

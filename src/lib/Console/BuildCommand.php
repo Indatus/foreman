@@ -15,6 +15,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Construction\Laravel;
 
+/**
+ * CLI command used to build a new Laravel app
+ * and customize it with directives in a provided
+ * Foreman template
+ */
 class BuildCommand extends \Symfony\Component\Console\Command\Command
 {
 

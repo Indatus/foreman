@@ -16,6 +16,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Scaffolding\TemplateWriter;
 use Illuminate\Filesystem\Filesystem;
 
+/**
+ * CLI command used for generating a scaffolded
+ * Foreman template
+ */
 class ScaffoldCommand extends \Symfony\Component\Console\Command\Command
 {
 
