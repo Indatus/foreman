@@ -135,7 +135,203 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
             $expectedPackages,
             $composer->getComposerArray()[Composer::REQUIRE_DEV_DEPENDENCIES]
         );
+    }
 
+
+    public function testAutoloadClassmap()
+    {
+        $appDir = '/path/to/app';
+        $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
+        $classmap = $this->getConfig()['autoload']['classmap'];
+
+        $mFS = m::mock('Illuminate\Filesystem\Filesystem');
+        $mFS->shouldReceive('get')
+            ->once()
+            ->with($composerPath)
+            ->andReturn($this->getComposerJson());
+   
+        $mCmd = m::mock('Console\BuildCommand');
+        $mCmd->shouldIgnoreMissing();
+
+        foreach ($classmap as $entry) {
+
+            $mCmd->shouldReceive('comment')
+                ->once()
+                ->with("Composer", "Autoload Classmap adding: {$entry}");
+        }
+        
+
+        $composer = new Composer(
+            $appDir,
+            $this->getConfig(),
+            $mFS,
+            $mCmd
+        );
+        $composer->autoloadClassmap();
+
+        $expectedEntries = [
+            'app/lib',
+            'app/commands',
+            'app/controllers',
+            'app/models',
+            'app/database/migrations',
+            'app/database/seeds',
+            'app/test/TestCase.php'
+        ];
+
+        $this->assertEquals(
+            $expectedEntries,
+            array_get($composer->getComposerArray(), Composer::AUTOLOAD_CLASSMAP)
+        );
+
+    }
+
+
+
+    public function testAutoloadPsr0()
+    {
+        $appDir = '/path/to/app';
+        $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
+        $load = $this->getConfig()['autoload']['psr-0'];
+
+        $mFS = m::mock('Illuminate\Filesystem\Filesystem');
+        $mFS->shouldReceive('get')
+            ->once()
+            ->with($composerPath)
+            ->andReturn($this->getComposerJson());
+   
+        $mCmd = m::mock('Console\BuildCommand');
+        $mCmd->shouldIgnoreMissing();
+
+        foreach ($load as $name => $value) {
+
+            $mCmd->shouldReceive('comment')
+                ->once()
+                ->with("Composer", "Adding PSR0 entry {$name} => {$value}");
+        }
+        
+
+        $composer = new Composer(
+            $appDir,
+            $this->getConfig(),
+            $mFS,
+            $mCmd
+        );
+        $composer->autoloadPsr0();
+
+        $expectedEntries = [
+            "Acme" => "app/lib"
+        ];
+
+        $this->assertEquals(
+            $expectedEntries,
+            array_get($composer->getComposerArray(), Composer::AUTOLOAD_PSR0)
+        );
+
+    }
+
+
+
+    public function testAutoloadPsr4()
+    {
+        $appDir = '/path/to/app';
+        $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
+        $load = $this->getConfig()['autoload']['psr-4'];
+
+        $mFS = m::mock('Illuminate\Filesystem\Filesystem');
+        $mFS->shouldReceive('get')
+            ->once()
+            ->with($composerPath)
+            ->andReturn($this->getComposerJson());
+   
+        $mCmd = m::mock('Console\BuildCommand');
+        $mCmd->shouldIgnoreMissing();
+
+        foreach ($load as $name => $value) {
+
+            $mCmd->shouldReceive('comment')
+                ->once()
+                ->with("Composer", "Adding PSR4 entry {$name} => {$value}");
+        }
+        
+
+        $composer = new Composer(
+            $appDir,
+            $this->getConfig(),
+            $mFS,
+            $mCmd
+        );
+        $composer->autoloadPsr4();
+
+        $expectedEntries = [
+            "Foo\\Bar\\" => "src/Foo/Bar/"
+        ];
+
+        $this->assertEquals(
+            $expectedEntries,
+            array_get($composer->getComposerArray(), Composer::AUTOLOAD_PSR4)
+        );
+
+    }
+
+
+    public function testGetComposerJson()
+    {
+        $appDir = '/path/to/app';
+        $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
+
+        $mFS = m::mock('Illuminate\Filesystem\Filesystem');
+        $mFS->shouldReceive('get')
+            ->once()
+            ->with($composerPath)
+            ->andReturn($this->getComposerJson());
+   
+        $mCmd = m::mock('Console\BuildCommand');
+        $mCmd->shouldIgnoreMissing();
+
+        $composer = new Composer(
+            $appDir,
+            $this->getConfig(),
+            $mFS,
+            $mCmd
+        );
+   
+        $this->assertEquals(
+            $this->getComposerJson(),
+            $composer->getComposerJson()
+        );
+    }
+
+
+    public function testWriteComposerJson()
+    {
+        $appDir = '/path/to/app';
+        $composerPath = $appDir.DIRECTORY_SEPARATOR.'composer.json';
+
+        $mFS = m::mock('Illuminate\Filesystem\Filesystem');
+        $mFS->shouldReceive('get')
+            ->once()
+            ->with($composerPath)
+            ->andReturn($this->getComposerJson());
+
+        $mFS->shouldReceive('put')
+            ->once()
+            ->with($composerPath, $this->getComposerJson());
+   
+        $mCmd = m::mock('Console\BuildCommand');
+        $mCmd->shouldIgnoreMissing();
+
+        $mCmd->shouldReceive('comment')
+            ->once()
+            ->with("Composer", "Writing composer file to {$composerPath}");
+
+        $composer = new Composer(
+            $appDir,
+            $this->getConfig(),
+            $mFS,
+            $mCmd
+        );
+        $composer->writeComposerJson();
     }
 
 
@@ -154,6 +350,7 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
             ],
             'autoload' => [
                 'classmap' => [
+                    'app/lib',
                     'app/commands',
                     'app/controllers',
                     'app/models',
@@ -164,7 +361,9 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
                 'psr-0' => [
                     "Acme" => "app/lib"
                 ],
-                'psr-4' => []
+                'psr-4' => [
+                    "Foo\\Bar\\" => "src/Foo/Bar/"
+                ]
             ]
         ];
     }
@@ -176,7 +375,10 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "laravel/framework": "4.1.*"

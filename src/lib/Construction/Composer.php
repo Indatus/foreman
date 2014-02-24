@@ -111,18 +111,42 @@ class Composer
     }
 
 
-    // public function getComposerJson()
-    // {
-    //     return json_encode($this->composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-    // }
+    /**
+     * Function to parse the stored composer directives array
+     * into JSON
+     * 
+     * @return string
+     */
+    public function getComposerJson()
+    {
+        return json_encode($this->composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    }
 
 
-    // public function writeComposerJson()
-    // {
-    //     (new Filesystem)->put('/Users/bwebb/Desktop/composer.json', $this->getComposerJson());
-    // }
+    /**
+     * Function to write out the built up composer.json
+     * file based on the directives parsed from the Foreman
+     * template file
+     * 
+     * @return void
+     */
+    public function writeComposerJson()
+    {
+        $composerJson = Path::absolute('composer.json', $this->appDir);
+
+        $this->command->comment('Composer', "Writing composer file to {$composerJson}");
+
+        $this->filesystem->put($composerJson, $this->getComposerJson());
+    }
 
 
+    /**
+     * Function to process the Foreman template section related
+     * to 'require' and make the appropriate updates to the composer
+     * directives held in memory.
+     * 
+     * @return void
+     */
     public function requirePackages()
     {
         $key = str_replace(TemplateReader::COMPOSER.'.', '', TemplateReader::COMPOSER_REQ);
@@ -139,10 +163,17 @@ class Composer
             $require[$pkg] = $ver;
         }
 
-        $this->composer[static::REQUIRE_DEPENDENCIES] = $require;
+        array_set($this->composer, static::REQUIRE_DEPENDENCIES, $require);
     }
 
 
+    /**
+     * Function to process the Foreman template section related
+     * to 'require-dev' and make the appropriate updates to the composer
+     * directives held in memory.
+     * 
+     * @return void
+     */
     public function requireDevPackages()
     {
         $key = str_replace(TemplateReader::COMPOSER.'.', '', TemplateReader::COMPOSER_REQ_DEV);
@@ -160,30 +191,94 @@ class Composer
             $require_dev[$pkg] = $ver;
         }
 
-        $this->composer[static::REQUIRE_DEV_DEPENDENCIES] = $require_dev;
+        //if the require-dev key exists already just write to it
+        if (array_key_exists(static::REQUIRE_DEV_DEPENDENCIES, $this->composer)) {
+
+            array_set($this->composer, static::REQUIRE_DEV_DEPENDENCIES, $require_dev);
+
+        //if not we'll add it but to make it clean we'll add it right behind the require key
+        } else {
+
+            $offset = array_search(static::REQUIRE_DEPENDENCIES, array_keys($this->composer)) + 1;
+
+            $require_dev_block = [static::REQUIRE_DEV_DEPENDENCIES => $require_dev];
+
+            $this->composer = array_slice($this->composer, 0, $offset, true)
+                + $require_dev_block
+                + array_slice($this->composer, $offset, null, true);
+        }
     }
 
 
+    /**
+     * Function to process the Foreman template section related
+     * to 'autoload > classmap' and make the appropriate updates to the composer
+     * directives held in memory.
+     * 
+     * @return void
+     */
     public function autoloadClassmap()
     {
         $key = str_replace(TemplateReader::COMPOSER.'.', '', TemplateReader::COMPOSER_AUTOLOAD_CLS_MAP);
 
         $data = array_get($this->config, $key);
+
+        foreach ($data as $entry) {
+            $this->command->comment('Composer', "Autoload Classmap adding: {$entry}");
+        }
+
+        array_set($this->composer, static::AUTOLOAD_CLASSMAP, $data);
     }
 
 
+    /**
+     * Function to process the Foreman template section related
+     * to 'autoload > psr-0' and make the appropriate updates to the composer
+     * directives held in memory.
+     * 
+     * @return void
+     */
     public function autoloadPsr0()
     {
         $key = str_replace(TemplateReader::COMPOSER.'.', '', TemplateReader::COMPOSER_AUTOLOAD_PSR0);
 
         $data = array_get($this->config, $key);
+
+        $psr0 = [];
+
+        foreach ($data as $name => $value) {
+
+            $this->command->comment("Composer", "Adding PSR0 entry {$name} => {$value}");
+
+            $psr0[$name] = $value;
+        }
+
+        array_set($this->composer, static::AUTOLOAD_PSR0, $psr0);
     }
 
 
+    /**
+     * Function to process the Foreman template section related
+     * to 'autoload > psr-4' and make the appropriate updates to the composer
+     * directives held in memory.
+     * 
+     * @return void
+     */
     public function autoloadPsr4()
     {
         $key = str_replace(TemplateReader::COMPOSER.'.', '', TemplateReader::COMPOSER_AUTOLOAD_PSR4);
 
         $data = array_get($this->config, $key);
+
+        $psr4 = [];
+
+        foreach ($data as $name => $value) {
+
+            $this->command->comment("Composer", "Adding PSR4 entry {$name} => {$value}");
+
+            $psr4[$name] = $value;
+        }
+
+        array_set($this->composer, static::AUTOLOAD_PSR4, $psr4);
     }
 }
