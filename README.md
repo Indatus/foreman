@@ -1,6 +1,6 @@
 # Foreman
 
-Foreman is a Laravel scaffolding application that automates common tasks you typically perform with each new Laravel app you create.  The directives you want Forman to perform and outlined in a JSON based template file.
+Foreman is a Laravel scaffolding application that automates common tasks you typically perform with each new Laravel app you create.  The directives you want Forman to perform are outlined in a JSON based template file.
 
 ## README Contents
 
