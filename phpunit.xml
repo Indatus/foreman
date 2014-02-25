@@ -11,7 +11,7 @@
          syntaxCheck="false"
 >
     <testsuites>
-        <testsuite name="Callbot Test Suite">
+        <testsuite name="Foreman Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
