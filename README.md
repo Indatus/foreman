@@ -1,5 +1,9 @@
 # Foreman
 
+<p align="left">
+<img height="300" src="https://s3-us-west-2.amazonaws.com/oss-avatars/foreman_round_readme.png">
+</p>
+
 Foreman is a Laravel scaffolding application that automates common tasks you typically perform with each new Laravel app you create.  The directives you want Forman to perform are outlined in a JSON based template file.
 
 ## README Contents
@@ -10,6 +14,7 @@ Foreman is a Laravel scaffolding application that automates common tasks you typ
 * [Scaffolding a Template](#scaffolding)
   * [Working with a template](#working-with-template)
 * [Build a Laravel app from a template](#building)
+
 
 <a name="what-does-it-do" />
 ## What does it do?
