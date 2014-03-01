@@ -1,3 +1,4 @@
+bin/coveralls
 tests/coverage
 tests/meta
 /src/vendor
