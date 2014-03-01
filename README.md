@@ -10,6 +10,9 @@ Foreman is a Laravel scaffolding application that automates common tasks you typ
 
 * [What does it do](#what-does-it-do)
 * [Installation](#installation)
+  * [Download the PHAR](#install-download)
+  * [Compile from source](#install-compile)
+  * [Install with Homebrew](#install-homebrew)
   * [Updating Foreman](#updating)
 * [Scaffolding a Template](#scaffolding)
   * [Working with a template](#working-with-template)
@@ -35,11 +38,41 @@ Foreman is a Laravel scaffolding application that automates common tasks you typ
 <a name="installation" />
 ## Installation
 
+
+<a name="install-download" />
+### Download the PHAR
 The simplest method of installation is to simply [download the foreman.phar](https://github.com/indatus/foreman/raw/master/foreman.phar) file from this repository.
 
+<a name="mv-easy-access" />
+> **(Optional) Move and set permissions**
+Now if you'd like you can move the PHAR to `/usr/local/bin` as `foreman` for easy access. You may need to grant the file execution privileges (`chmod +x`) before running commands.
+
+<a name="install-compile" />
+### Compile from source
 To compile the foreman.phar file yourself, clone this repository and run the `box build` command. To run box commands, you must install [kherge/Box](https://github.com/kherge/Box).
 
-Once the Phar has been compiled, move it to `/usr/local/bin` as `foreman` for easy access. You may need to grant the file execution privileges (`chmod +x`) before running commands.
+[See optional move and permissions above](#mv-easy-access).
+
+<a name="install-homebrew" />
+### Install with Homebrew
+
+You can also install Foreman via [Homebrew](http://brew.sh).  If you don't already have homebrew installed, you can install it with:
+
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+Next you'll need to add the sources necessary to install foreman:
+
+    brew tap homebrew/dupes
+    brew tap homebrew/versions
+    brew tap josegonzalez/homebrew-php
+
+Now update all formulae
+
+    brew update
+
+And then install Foreman
+
+    brew install foreman
 
 <a name="updating" />
 ### Updating Foreman
