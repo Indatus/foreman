@@ -6,7 +6,11 @@
 
 Foreman is a Laravel scaffolding application that automates common tasks you typically perform with each new Laravel app you create.  The directives you want Forman to perform are outlined in a JSON based template file.
 
-[![Build Status](https://travis-ci.org/Indatus/foreman.png?branch=master)](https://travis-ci.org/Indatus/foreman) [![Coverage Status](https://coveralls.io/repos/Indatus/foreman/badge.png)](https://coveralls.io/r/Indatus/foreman)
+[![Build Status](https://travis-ci.org/Indatus/foreman.png?branch=master)](https://travis-ci.org/Indatus/foreman) 
+
+<!--
+[![Coverage Status](https://coveralls.io/repos/Indatus/foreman/badge.png)](https://coveralls.io/r/Indatus/foreman)
+-->
 
 ## README Contents
 
