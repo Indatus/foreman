@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1399809853">
+  <project timestamp="1399809853">
+    <package name="Construction">
+      <file name="/Users/bwebb/workspace/projects/foreman/src/lib/Construction/Composer.php">
+        <class name="Composer" namespace="Construction">
+          <metrics methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="71" elements="80" coveredelements="80"/>
+        </class>
+        <line num="87" type="method" name="__construct" crap="1" count="9"/>
+        <line num="89" type="stmt" count="9"/>
+        <line num="90" type="stmt" count="9"/>
+        <line num="91" type="stmt" count="9"/>
+        <line num="92" type="stmt" count="9"/>
+        <line num="94" type="stmt" count="9"/>
+        <line num="96" type="stmt" count="9"/>
+        <line num="98" type="stmt" count="9"/>
+        <line num="99" type="stmt" count="9"/>
+        <line num="108" type="method" name="getComposerArray" crap="1" count="7"/>
+        <line num="110" type="stmt" count="7"/>
+        <line num="120" type="method" name="getComposerJson" crap="1" count="2"/>
+        <line num="122" type="stmt" count="2"/>
+        <line num="133" type="method" name="writeComposerJson" crap="1" count="1"/>
+        <line num="135" type="stmt" count="1"/>
+        <line num="137" type="stmt" count="1"/>
+        <line num="139" type="stmt" count="1"/>
+        <line num="140" type="stmt" count="1"/>
+        <line num="150" type="method" name="requirePackages" crap="2" count="1"/>
+        <line num="152" type="stmt" count="1"/>
+        <line num="154" type="stmt" count="1"/>
+        <line num="155" type="stmt" count="1"/>
+        <line num="157" type="stmt" count="1"/>
+        <line num="158" type="stmt" count="1"/>
+        <line num="159" type="stmt" count="1"/>
+        <line num="161" type="stmt" count="1"/>
+        <line num="163" type="stmt" count="1"/>
+        <line num="164" type="stmt" count="1"/>
+        <line num="166" type="stmt" count="1"/>
+        <line num="167" type="stmt" count="1"/>
+        <line num="177" type="method" name="requireDevPackages" crap="3" count="2"/>
+        <line num="179" type="stmt" count="2"/>
+        <line num="181" type="stmt" count="2"/>
+        <line num="183" type="stmt" count="2"/>
+        <line num="185" type="stmt" count="2"/>
+        <line num="186" type="stmt" count="2"/>
+        <line num="187" type="stmt" count="2"/>
+        <line num="189" type="stmt" count="2"/>
+        <line num="191" type="stmt" count="2"/>
+        <line num="192" type="stmt" count="2"/>
+        <line num="195" type="stmt" count="2"/>
+        <line num="197" type="stmt" count="1"/>
+        <line num="200" type="stmt" count="1"/>
+        <line num="202" type="stmt" count="1"/>
+        <line num="204" type="stmt" count="1"/>
+        <line num="206" type="stmt" count="1"/>
+        <line num="208" type="stmt" count="1"/>
+        <line num="210" type="stmt" count="2"/>
+        <line num="220" type="method" name="autoloadClassmap" crap="2" count="1"/>
+        <line num="222" type="stmt" count="1"/>
+        <line num="224" type="stmt" count="1"/>
+        <line num="226" type="stmt" count="1"/>
+        <line num="227" type="stmt" count="1"/>
+        <line num="228" type="stmt" count="1"/>
+        <line num="230" type="stmt" count="1"/>
+        <line num="231" type="stmt" count="1"/>
+        <line num="241" type="method" name="autoloadPsr0" crap="3" count="1"/>
+        <line num="243" type="stmt" count="1"/>
+        <line num="245" type="stmt" count="1"/>
+        <line num="247" type="stmt" count="1"/>
+        <line num="249" type="stmt" count="1"/>
+        <line num="251" type="stmt" count="1"/>
+        <line num="253" type="stmt" count="1"/>
+        <line num="254" type="stmt" count="1"/>
+        <line num="256" type="stmt" count="1"/>
+        <line num="257" type="stmt" count="1"/>
+        <line num="258" type="stmt" count="1"/>
+        <line num="259" type="stmt" count="1"/>
+        <line num="269" type="method" name="autoloadPsr4" crap="3" count="1"/>
+        <line num="271" type="stmt" count="1"/>
+        <line num="273" type="stmt" count="1"/>
+        <line num="275" type="stmt" count="1"/>
+        <line num="277" type="stmt" count="1"/>
+        <line num="279" type="stmt" count="1"/>
+        <line num="281" type="stmt" count="1"/>
+        <line num="282" type="stmt" count="1"/>
+        <line num="284" type="stmt" count="1"/>
+        <line num="285" type="stmt" count="1"/>
+        <line num="286" type="stmt" count="1"/>
+        <line num="287" type="stmt" count="1"/>
+        <line num="289" type="stmt" count="1"/>
+        <metrics loc="288" ncloc="180" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="71" elements="80" coveredelements="80"/>
+      </file>
+      <file name="/Users/bwebb/workspace/projects/foreman/src/lib/Construction/Laravel.php">
+        <class name="Laravel" namespace="Construction">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="16" coveredelements="16"/>
+        </class>
+        <line num="45" type="method" name="__construct" crap="1" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="58" type="method" name="install" crap="1" count="1"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="1"/>
+        <line num="64" type="stmt" count="1"/>
+        <line num="65" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="1"/>
+        <metrics loc="77" ncloc="43" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="16" coveredelements="16"/>
+      </file>
+      <file name="/Users/bwebb/workspace/projects/foreman/src/lib/Construction/Structure.php">
+        <class name="Structure" namespace="Construction">
+          <metrics methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="65" elements="71" coveredelements="71"/>
+        </class>
+        <line num="56" type="method" name="__construct" crap="1" count="5"/>
+        <line num="58" type="stmt" count="5"/>
+        <line num="59" type="stmt" count="5"/>
+        <line num="60" type="stmt" count="5"/>
+        <line num="61" type="stmt" count="5"/>
+        <line num="62" type="stmt" count="5"/>
+        <line num="75" type="method" name="copy" crap="5" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="1"/>
+        <line num="81" type="stmt" count="1"/>
+        <line num="83" type="stmt" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="88" type="stmt" count="1"/>
+        <line num="89" type="stmt" count="1"/>
+        <line num="90" type="stmt" count="1"/>
+        <line num="91" type="stmt" count="1"/>
+        <line num="93" type="stmt" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="97" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
+        <line num="100" type="stmt" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="104" type="stmt" count="1"/>
+        <line num="106" type="stmt" count="1"/>
+        <line num="107" type="stmt" count="1"/>
+        <line num="117" type="method" name="move" crap="4" count="1"/>
+        <line num="119" type="stmt" count="1"/>
+        <line num="121" type="stmt" count="1"/>
+        <line num="123" type="stmt" count="1"/>
+        <line num="125" type="stmt" count="1"/>
+        <line num="127" type="stmt" count="1"/>
+        <line num="128" type="stmt" count="1"/>
+        <line num="130" type="stmt" count="1"/>
+        <line num="132" type="stmt" count="1"/>
+        <line num="133" type="stmt" count="1"/>
+        <line num="134" type="stmt" count="1"/>
+        <line num="135" type="stmt" count="1"/>
+        <line num="145" type="method" name="delete" crap="3" count="1"/>
+        <line num="147" type="stmt" count="1"/>
+        <line num="149" type="stmt" count="1"/>
+        <line num="151" type="stmt" count="1"/>
+        <line num="153" type="stmt" count="1"/>
+        <line num="155" type="stmt" count="1"/>
+        <line num="157" type="stmt" count="1"/>
+        <line num="159" type="stmt" count="1"/>
+        <line num="161" type="stmt" count="1"/>
+        <line num="163" type="stmt" count="1"/>
+        <line num="165" type="stmt" count="1"/>
+        <line num="166" type="stmt" count="1"/>
+        <line num="174" type="method" name="touch" crap="2" count="1"/>
+        <line num="176" type="stmt" count="1"/>
+        <line num="178" type="stmt" count="1"/>
+        <line num="180" type="stmt" count="1"/>
+        <line num="182" type="stmt" count="1"/>
+        <line num="184" type="stmt" count="1"/>
+        <line num="186" type="stmt" count="1"/>
+        <line num="187" type="stmt" count="1"/>
+        <line num="188" type="stmt" count="1"/>
+        <line num="196" type="method" name="mkdirs" crap="3" count="1"/>
+        <line num="198" type="stmt" count="1"/>
+        <line num="200" type="stmt" count="1"/>
+        <line num="202" type="stmt" count="1"/>
+        <line num="204" type="stmt" count="1"/>
+        <line num="206" type="stmt" count="1"/>
+        <line num="208" type="stmt" count="1"/>
+        <line num="210" type="stmt" count="1"/>
+        <line num="212" type="stmt" count="1"/>
+        <line num="213" type="stmt" count="1"/>
+        <line num="214" type="stmt" count="1"/>
+        <line num="216" type="stmt" count="1"/>
+        <metrics loc="215" ncloc="137" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="65" elements="71" coveredelements="71"/>
+      </file>
+      <file name="/Users/bwebb/workspace/projects/foreman/src/lib/Construction/TemplateReader.php">
+        <class name="TemplateReader" namespace="Construction">
+          <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
+        </class>
+        <line num="64" type="method" name="__construct" crap="1" count="2"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="67" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="70" type="stmt" count="2"/>
+        <line num="71" type="stmt" count="2"/>
+        <line num="80" type="method" name="getConfig" crap="1" count="2"/>
+        <line num="82" type="stmt" count="2"/>
+        <line num="93" type="method" name="getConfigSection" crap="1" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
+        <metrics loc="97" ncloc="49" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
+      </file>
+    </package>
+    <package name="Scaffolding">
+      <file name="/Users/bwebb/workspace/projects/foreman/src/lib/Scaffolding/TemplateWriter.php">
+        <class name="TemplateWriter" namespace="Scaffolding">
+          <metrics methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="42" coveredelements="42"/>
+        </class>
+        <line num="42" type="method" name="__construct" crap="2" count="4"/>
+        <line num="44" type="stmt" count="4"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="4"/>
+        <line num="50" type="stmt" count="4"/>
+        <line num="51" type="stmt" count="4"/>
+        <line num="58" type="method" name="getPath" crap="1" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="70" type="method" name="getStructureArray" crap="1" count="3"/>
+        <line num="75" type="stmt" count="3"/>
+        <line num="76" type="stmt" count="3"/>
+        <line num="78" type="stmt" count="3"/>
+        <line num="79" type="stmt" count="3"/>
+        <line num="80" type="stmt" count="3"/>
+        <line num="81" type="stmt" count="3"/>
+        <line num="82" type="stmt" count="3"/>
+        <line num="83" type="stmt" count="3"/>
+        <line num="86" type="stmt" count="3"/>
+        <line num="87" type="stmt" count="3"/>
+        <line num="89" type="stmt" count="3"/>
+        <line num="90" type="stmt" count="3"/>
+        <line num="93" type="stmt" count="3"/>
+        <line num="94" type="stmt" count="3"/>
+        <line num="95" type="stmt" count="3"/>
+        <line num="96" type="stmt" count="3"/>
+        <line num="97" type="stmt" count="3"/>
+        <line num="99" type="stmt" count="3"/>
+        <line num="100" type="stmt" count="3"/>
+        <line num="101" type="stmt" count="3"/>
+        <line num="102" type="stmt" count="3"/>
+        <line num="103" type="stmt" count="3"/>
+        <line num="104" type="stmt" count="3"/>
+        <line num="114" type="method" name="getStructureJson" crap="1" count="2"/>
+        <line num="116" type="stmt" count="2"/>
+        <line num="128" type="method" name="write" crap="2" count="1"/>
+        <line num="131" type="stmt" count="1"/>
+        <line num="133" type="stmt" count="1"/>
+        <line num="135" type="stmt" count="1"/>
+        <line num="137" type="stmt" count="1"/>
+        <line num="140" type="stmt" count="1"/>
+        <line num="142" type="stmt" count="1"/>
+        <line num="145" type="stmt" count="1"/>
+        <metrics loc="144" ncloc="93" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="42" coveredelements="42"/>
+      </file>
+    </package>
+    <package name="Support">
+      <file name="/Users/bwebb/workspace/projects/foreman/src/lib/Support/Path.php">
+        <class name="Path" namespace="Support">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
+        </class>
+        <line num="23" type="method" name="removeTrailingSlash" crap="3" count="13"/>
+        <line num="25" type="stmt" count="13"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="13"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="13"/>
+        <line num="46" type="method" name="absolute" crap="2" count="15"/>
+        <line num="49" type="stmt" count="15"/>
+        <line num="51" type="stmt" count="6"/>
+        <line num="54" type="stmt" count="6"/>
+        <line num="56" type="stmt" count="12"/>
+        <line num="58" type="stmt" count="12"/>
+        <line num="61" type="stmt" count="15"/>
+        <line num="64" type="stmt" count="1"/>
+        <metrics loc="63" ncloc="36" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
+      </file>
+    </package>
+    <metrics files="6" loc="884" ncloc="538" classes="6" methods="27" coveredmethods="27" conditionals="0" coveredconditionals="0" statements="206" coveredstatements="206" elements="233" coveredelements="233"/>
+  </project>
+</coverage>

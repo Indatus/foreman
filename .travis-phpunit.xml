@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="src/vendor/autoload.php" colors="true">
+ <filter>
+      <whitelist addUncoveredFilesFromWhitelist="false">
+          <directory suffix=".php">src/lib</directory>
+          <exclude>
+              <directory>src/lib/Console</directory>
+              <directory>src/vendor</directory>
+          </exclude>
+      </whitelist>
+  </filter>
+  <logging>
+    <log type="coverage-clover" target="/tmp/coverage.xml"/>
+    <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+  </logging>
+  <listeners>
+    <listener class="League\PHPUnitCoverageListener\Listener">
+      <arguments>
+        <array>
+          <element key="repo_token">
+            <string>naA6u99POmC25aFSKbQJi8cJBOt7LQu6K</string>
+          </element>
+          <element key="target_url">
+            <string>https://coveralls.io/api/v1/jobs</string>
+          </element>
+          <element key="printer">
+            <object class="League\PHPUnitCoverageListener\Printer\StdOut"/>
+          </element>
+          <element key="hook">
+            <object class="League\PHPUnitCoverageListener\Hook\Travis"/>
+          </element>
+          <element key="coverage_dir">
+            <string>/tmp</string>
+          </element>
+        </array>
+      </arguments>
+    </listener>
+  </listeners>
+  <testsuites>
+        <testsuite name="Foreman Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
