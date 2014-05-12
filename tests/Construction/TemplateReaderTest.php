@@ -1,7 +1,6 @@
 <?php namespace Construction;
 
 use Mockery as m;
-use Illuminate\Filesystem\Filesystem as FS;
 use Construction\TemplateReader;
 
 class TemplateReaderTest extends \PHPUnit_Framework_TestCase

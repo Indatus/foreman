@@ -1,7 +1,6 @@
 <?php namespace Construction;
 
 use Mockery as m;
-use Illuminate\Filesystem\Filesystem as FS;
 use Construction\Structure;
 use Support\Path;
 use org\bovigo\vfs\vfsStream;
