@@ -26,7 +26,6 @@
     "require-dev": {
         "mockery/mockery": "dev-master",
         "mikey179/vfsStream": "1.3.*@dev",
-        "league/phpunit-coverage-listener": "~1.0",
         "hot/phpunit-runner": "dev-master"
     },
     "config": {

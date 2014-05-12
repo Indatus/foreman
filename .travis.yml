@@ -8,4 +8,7 @@ before_script:
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install --dev --no-interaction  
 
-script: phpunit -c .travis-phpunit.xml
+script: 
+ - phpunit --coverage-clover=coverage.clover
+ - wget https://scrutinizer-ci.com/ocular.phar
+ - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
