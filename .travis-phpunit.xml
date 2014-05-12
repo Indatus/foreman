@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="src/vendor/autoload.php" colors="true">
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="src/vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+>
+
  <filter>
       <whitelist addUncoveredFilesFromWhitelist="false">
           <directory suffix=".php">src/lib</directory>
@@ -17,6 +28,9 @@
     <listener class="League\PHPUnitCoverageListener\Listener">
       <arguments>
         <array>
+          <element key="namespace">
+            <string></string>
+          </element>
           <element key="repo_token">
             <string>naA6u99POmC25aFSKbQJi8cJBOt7LQu6K</string>
           </element>
