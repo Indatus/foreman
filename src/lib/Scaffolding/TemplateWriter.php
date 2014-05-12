@@ -37,7 +37,7 @@ class TemplateWriter
      * Constructor
      * 
      * @param string $path
-     * @param Illuminate\Filesystem\Filesystem $filesystem
+     * @param Filesystem $filesystem
      */
     public function __construct($path, $filesystem)
     {
